@@ -1,0 +1,11 @@
+﻿1>------ Build started: Project: zserver, Configuration: Debug Win32 ------
+1>  zventilator.cpp
+1>  Generating Code...
+1>  Compiling...
+1>  main_zserver.cpp
+1>d:\work\vcproject\zserver\zserver\ztop.h : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
+1>  Generating Code...
+1>  Skipping... (no relevant changes detected)
+1>  calcunit.cpp
+1>  zserver.vcxproj -> D:\work\vcproject\zserver\Debug\zserver.exe
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========

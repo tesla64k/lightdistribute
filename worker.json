@@ -1,0 +1,5 @@
+{
+"nodes":[{"app":"oct" ,"ventilator":"v1"}],
+"oct":"c:/xx.exe",
+"unet":"d:/yy.exe"
+}

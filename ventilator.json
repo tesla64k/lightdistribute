@@ -1,0 +1,3 @@
+{"nodes":[
+	{"group":[{"heartbeaten":"tcp://127.0.0.1:7067","taskassigner":"tcp://127.0.0.1:7068","top":"t1","ventilator":"v1"}],"function":"location","app":""}
+]}

@@ -12,6 +12,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testcasetop", "testcasetop\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "json", "json\json.vcxproj", "{31880D97-3397-45D9-B856-6FCC76F00419}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testcaseventilator", "testcaseventilator\testcaseventilator.vcxproj", "{D069A2CF-AFF4-4BB9-B1DA-62DA788B7040}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -30,6 +32,10 @@ Global
 		{31880D97-3397-45D9-B856-6FCC76F00419}.Debug|Win32.Build.0 = Debug|Win32
 		{31880D97-3397-45D9-B856-6FCC76F00419}.Release|Win32.ActiveCfg = Release|Win32
 		{31880D97-3397-45D9-B856-6FCC76F00419}.Release|Win32.Build.0 = Release|Win32
+		{D069A2CF-AFF4-4BB9-B1DA-62DA788B7040}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D069A2CF-AFF4-4BB9-B1DA-62DA788B7040}.Debug|Win32.Build.0 = Debug|Win32
+		{D069A2CF-AFF4-4BB9-B1DA-62DA788B7040}.Release|Win32.ActiveCfg = Release|Win32
+		{D069A2CF-AFF4-4BB9-B1DA-62DA788B7040}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

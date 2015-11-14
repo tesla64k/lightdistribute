@@ -93,6 +93,7 @@ bool zparallel::TopLoop()
 {
  	ztop* ptop = dynamic_cast<ztop*>(G_PNode);
 	auto ret = ptop->InitialTop();
+	ret = ptop->signal();
 	return ret;
 }
 
@@ -100,6 +101,7 @@ bool zparallel::VentilatorLoop()
 {
 	zventilator* pven = dynamic_cast<zventilator*>(G_PNode);
 	auto ret = pven->StartVentilator();
+	pven->WorkLoop();
 	return ret;
 }
 

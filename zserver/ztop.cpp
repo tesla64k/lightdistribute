@@ -75,7 +75,7 @@ int ztop::signal()
 		for (auto i = 0; i < vItems.size();i++)
 		{
 			zmq_pollitem_t& t = vItems[i];
-			if ((t.revents &ZMQ_POLLIN) && i == 0)						//按照初始化顺序，case通道第一
+			if ((t.revents &ZMQ_POLLIN) && t.socket == jobSocket)						//按照初始化顺序，case通道第一
 			{
 				rc = zparallel::zMsgRecvOnce(t.socket, &msg);
 				if (rc == -1)
@@ -86,14 +86,14 @@ int ztop::signal()
 				$parseJson(&msg, &reader, &value);
 				$sendTask(&msg, &value, this);
 			}
-			else if ((t.revents &ZMQ_POLLIN) && i == 1)					//状态通道
+			else if ((t.revents &ZMQ_POLLIN) && t.socket == stateDownSocket)					//状态通道
 			{
 				;
 			}
-			else if ((t.revents &ZMQ_POLLIN) && i == 2)
-			{
-				;
-			}
+// 			else if ((t.revents &ZMQ_POLLIN) && jobSendSoketSets.find(t.socket) != jobSendSoketSets.end())
+// 			{
+// 				;
+// 			}
 		}
 	}
 }
@@ -118,6 +118,7 @@ bool ztop::InitialService(std::vector<std::pair<std::string, std::string>> servi
 		{
 			pztop->pairs.insert(std::make_pair(sPair.first, s));
 			pztop->vItems.push_back({ s, 0, ZMQ_POLLIN, 0 });
+/*			pztop->jobSendSoketSets.insert(s);*/
 			std::cerr << sPair.first << " start success:" << sPair.second << std::endl;
 		}
 		else

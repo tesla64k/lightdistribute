@@ -3,6 +3,7 @@
 #include <queue>
 #include <map>
 #include "NodeCmdLine.h"
+/*#include <set>*/
 
 #define LOCATION "location"
 #define VOCANOL	"vocanol"
@@ -27,6 +28,7 @@ public:
 	std::string			jobAddr;
 	//服务插件通道
 	std::map<std::string, void*>	pairs;			//pull->push
+/*	std::set<void*>		jobSendSoketSets;*/
 	//插件服务地址
 	std::vector<std::pair<std::string, std::string>>	vServiceToAddr;
 private:

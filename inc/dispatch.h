@@ -31,8 +31,8 @@ namespace zparallel
 	{
 		friend void RegisterDispatch(dispatch*p);
 	public:
-		virtual std::deque<task_t*> GroupBy(std::string jobStr,std::string strerr,int*ret) = 0;
-		virtual std::deque<task_t*> GroupBy(zparallel::ztaskstatusframe* zfs, std::string strerr, int*ret) = 0;
+/*		virtual std::deque<task_t*> GroupBy(std::string jobStr,std::string strerr,int*ret) = 0;*/
+		virtual bool GroupBy(zparallel::ztaskstatusframe* zfs, std::deque<task_t*>*, std::string&strerr) = 0;
 		virtual void Encode(task_t*pTask) = 0;
 	private:
 		static dispatch* share_pdispatch;

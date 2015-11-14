@@ -5,17 +5,11 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zserver", "zserver\zserver.vcxproj", "{C8492A6D-289B-4064-80A8-DEE256B5234E}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testcasetop", "testcasetop\testcasetop.vcxproj", "{729FC7F4-FF65-4AC6-B9A5-A7CEDCFF2887}"
-	ProjectSection(ProjectDependencies) = postProject
-		{C8492A6D-289B-4064-80A8-DEE256B5234E} = {C8492A6D-289B-4064-80A8-DEE256B5234E}
-	EndProjectSection
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "json", "json\json.vcxproj", "{31880D97-3397-45D9-B856-6FCC76F00419}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testcaseworker", "testcaseworker\testcaseworker.vcxproj", "{D4498281-3553-4341-A99B-6426ECE0EC6C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "inc", "inc", "{8E30034F-8E5C-41F3-B535-EC7EBF0A343E}"
 	ProjectSection(SolutionItems) = preProject
+		inc\dispatch.h = inc\dispatch.h
 		inc\zframeworkbase.h = inc\zframeworkbase.h
 	EndProjectSection
 EndProject
@@ -29,14 +23,6 @@ Global
 		{C8492A6D-289B-4064-80A8-DEE256B5234E}.Debug|Win32.Build.0 = Debug|Win32
 		{C8492A6D-289B-4064-80A8-DEE256B5234E}.Release|Win32.ActiveCfg = Release|Win32
 		{C8492A6D-289B-4064-80A8-DEE256B5234E}.Release|Win32.Build.0 = Release|Win32
-		{729FC7F4-FF65-4AC6-B9A5-A7CEDCFF2887}.Debug|Win32.ActiveCfg = Debug|Win32
-		{729FC7F4-FF65-4AC6-B9A5-A7CEDCFF2887}.Debug|Win32.Build.0 = Debug|Win32
-		{729FC7F4-FF65-4AC6-B9A5-A7CEDCFF2887}.Release|Win32.ActiveCfg = Release|Win32
-		{729FC7F4-FF65-4AC6-B9A5-A7CEDCFF2887}.Release|Win32.Build.0 = Release|Win32
-		{31880D97-3397-45D9-B856-6FCC76F00419}.Debug|Win32.ActiveCfg = Debug|Win32
-		{31880D97-3397-45D9-B856-6FCC76F00419}.Debug|Win32.Build.0 = Debug|Win32
-		{31880D97-3397-45D9-B856-6FCC76F00419}.Release|Win32.ActiveCfg = Release|Win32
-		{31880D97-3397-45D9-B856-6FCC76F00419}.Release|Win32.Build.0 = Release|Win32
 		{D4498281-3553-4341-A99B-6426ECE0EC6C}.Debug|Win32.ActiveCfg = Debug|Win32
 		{D4498281-3553-4341-A99B-6426ECE0EC6C}.Debug|Win32.Build.0 = Debug|Win32
 		{D4498281-3553-4341-A99B-6426ECE0EC6C}.Release|Win32.ActiveCfg = Release|Win32

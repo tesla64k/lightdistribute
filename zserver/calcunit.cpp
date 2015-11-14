@@ -4,10 +4,14 @@
 
 bool zparallel::job_t::GroupBy(std::string info, calcresource_t*)
 {
+	Json::Reader r;
+	Json::Value v;
 	std::string strerr;
-	int ret;
-	pdispatch->GroupBy(info,strerr,&ret);
-	if (ret < 0)
+	zparallel::ztaskstatusframe zfs;
+	r.parse(info, v);
+	bool  ret = zfs.ReadJob(v);
+	ret = pdispatch->GroupBy(&zfs,&this->deqTasks,strerr);
+	if (ret < 0 ||deqTasks.size() == 0 )
 	{
 		std::cout << strerr << std::endl;
 		return false;

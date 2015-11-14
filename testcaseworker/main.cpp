@@ -5,7 +5,7 @@ void main()
 {
 	Json::Reader r;
 	ServiceConf service;
-	service.ReadConf("D:\\zserver\\server.ini", ServiceConf::ventilator.c_str());
+	service.ReadConf("D:\\zserver\\server.ini", ServiceConf::worker.c_str());
 	auto __ = service.cmdline;
 	std::cerr << __ << std::endl;
 	zparallel::_servicetype _type = zparallel::GetService(service.cmdline);

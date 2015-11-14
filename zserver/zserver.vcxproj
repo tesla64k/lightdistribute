@@ -84,7 +84,6 @@
   <ItemGroup>
     <ClInclude Include="calcunit.h" />
     <ClInclude Include="demon.h" />
-    <ClInclude Include="dispatch.h" />
     <ClInclude Include="ini.h" />
     <ClInclude Include="json\autolink.h" />
     <ClInclude Include="json\config.h" />

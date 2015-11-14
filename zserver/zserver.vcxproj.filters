@@ -92,9 +92,6 @@
     <ClInclude Include="ini.h">
       <Filter>utility</Filter>
     </ClInclude>
-    <ClInclude Include="dispatch.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="json\autolink.h">
       <Filter>json</Filter>
     </ClInclude>

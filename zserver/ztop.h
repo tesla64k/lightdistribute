@@ -5,8 +5,8 @@
 #include "NodeCmdLine.h"
 /*#include <set>*/
 
-#define LOCATION "location"
-#define VOCANOL	"vocanol"
+/*#define LOCATION "location"*/
+/*#define VOCANOL	"vocanol"*/
 #define TAG "tag"
 
 

@@ -16,6 +16,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testcaseworker", "testcasew
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "inc", "inc", "{8E30034F-8E5C-41F3-B535-EC7EBF0A343E}"
 	ProjectSection(SolutionItems) = preProject
+		inc\dispatch.h = inc\dispatch.h
 		inc\zframeworkbase.h = inc\zframeworkbase.h
 	EndProjectSection
 EndProject

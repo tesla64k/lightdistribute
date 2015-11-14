@@ -1,6 +1,14 @@
 #include "json.h"
 #include "zframeworkbase.h"
 #include "txtconf.h"
+#include "dispatch.h"
+
+struct exp:public zparallel::dispatch
+{
+	virtual std::deque<zparallel::task_t*> GroupBy(std::string jobStr) ;
+	virtual void Encode(zparallel::task_t*pTask) ;
+};
+
 void main()
 {
 	Json::Reader r;

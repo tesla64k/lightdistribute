@@ -35,7 +35,7 @@ private:
 	std::set<std::string>				vWorkerTag;
 public:
 	bool				StartVentilator();
-	void				WorkLoop();
+	void				VentilatorLoop();
 // 	Json::Value			ParseCmdLine(std::string);
 // 	bool				ValidateCmd(Json::Value&v);
 private:

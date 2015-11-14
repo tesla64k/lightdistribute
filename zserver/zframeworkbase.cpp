@@ -101,7 +101,7 @@ bool zparallel::VentilatorLoop()
 {
 	zventilator* pven = dynamic_cast<zventilator*>(G_PNode);
 	auto ret = pven->StartVentilator();
-	pven->WorkLoop();
+	pven->VentilatorLoop();
 	return ret;
 }
 

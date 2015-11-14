@@ -49,9 +49,11 @@ namespace zparallel{
 		Json::Value valueTag;
 		Json::Value valueJobId;
 		Json::Value valueTaskId;
+		Json::Value valueJobMeta;
 		Json::Value valueCase;
 		Json::Value valueStatus;
 		Json::Value valueParam;
+		Json::Value valueJobParam;
 		inline bool Read(Json::Value&v)
 		{
 			valueTag = v["tag"];
@@ -70,6 +72,16 @@ namespace zparallel{
 			valueTaskId = v["taskid"];
 			valueParam = v["param"];
 			if ( valueJobId.isNull() || valueTaskId.isNull()
+				|| valueParam.isNull())
+				return false;
+			return true;
+		}
+		inline bool ReadJob(Json::Value&v)
+		{
+			valueJobId = v["jobid"];
+			valueJobMeta = v["jobmeta"];
+			valueJobParam = v["jobparam"];
+			if (valueJobId.isNull() || valueJobMeta.isNull()||valueJobParam.isNull()
 				|| valueParam.isNull())
 				return false;
 			return true;

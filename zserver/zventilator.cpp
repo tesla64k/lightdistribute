@@ -37,7 +37,7 @@ bool zventilator::StartVentilator()
 	return true;
 }
 
-void zventilator::WorkLoop()
+void zventilator::VentilatorLoop()
 {
 	auto $ProxyCmd = [&](void* socket) ->int {
 		Json::Reader r;
@@ -260,13 +260,3 @@ zparallel::task_t* zventilator::SendTask(std::set<std::string>::iterator itr, zp
 ptrNULL:
 	return nullptr;
 }
-
-// Json::Value zventilator::ParseCmdLine(std::string)
-// {
-// 	Json::Value v;
-// }
-// 
-// bool zventilator::ValidateCmd(Json::Value&v)
-// {
-// 	return true;
-// }

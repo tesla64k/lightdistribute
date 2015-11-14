@@ -1,15 +1,17 @@
 #include "calcunit.h"
-
-
-// zparallel::task_t::task_t(int jid,int tid)
-// {
-// 	jobId = jid;
-// 	taskId = tid;
-// }
+#include <iostream>
+#include "json.h"
 
 bool zparallel::job_t::GroupBy(std::string info, calcresource_t*)
 {
-	pdispatch->GroupBy(info);
+	std::string strerr;
+	int ret;
+	pdispatch->GroupBy(info,strerr,&ret);
+	if (ret < 0)
+	{
+		std::cout << strerr << std::endl;
+		return false;
+	}
 	return true;
 }
 

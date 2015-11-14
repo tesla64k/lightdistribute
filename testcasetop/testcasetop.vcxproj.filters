@@ -45,9 +45,6 @@
     <ClInclude Include="TxtConf.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="zframeworkbase.h">
-      <Filter>源文件</Filter>
-    </ClInclude>
     <ClInclude Include="..\zserver\NodeCmdLine.h">
       <Filter>头文件</Filter>
     </ClInclude>

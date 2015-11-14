@@ -13,7 +13,7 @@ namespace zparallel{
 	static const int CASE_TASKFAILED = 0xAB02;
 	static const int CASE_TASKWARNING = 0xAB02;
 	static const int CASE_TASKOVER = 0xABCD;
-
+	
 	static const char* KEY_STATEJOBID = "\"job\"";
 	static const char* KEY_STATETASKID = "\"task\"";
 	static const char* KEY_STATETYPE = "\"type\"";
@@ -25,7 +25,7 @@ namespace zparallel{
 
 	static const bool HEARTBEAT = false;
 	static const bool TASKSTATE = true;
-
+	
 	enum _servicetype
 	{
 		NONE,
@@ -69,14 +69,14 @@ namespace zparallel{
 			valueJobId = v["jobid"];
 			valueTaskId = v["taskid"];
 			valueParam = v["param"];
-			if (valueJobId.isNull() || valueTaskId.isNull()
+			if ( valueJobId.isNull() || valueTaskId.isNull()
 				|| valueParam.isNull())
 				return false;
 			return true;
 		}
 	};
-	int zMsgRecvOnce(void*socekt, zmq_msg_t*pzmsg, int model = 0);
-	zmq_msg_t CreateStateMsg(int jobId, int taskId, int type, int stateCase, std::string info = "");
+	int zMsgRecvOnce(void*socekt,zmq_msg_t*pzmsg,int model = 0);
+	zmq_msg_t CreateStateMsg(int jobId,int taskId,int type,int stateCase,std::string info ="");
 
 	//demon interface
 	bool CreateCommand(std::string cmd);
@@ -84,11 +84,11 @@ namespace zparallel{
 
 	//service interface
 	_servicetype GetService(std::string cmd);
-
+	
 	//proxy interface
 	bool TopLoop();
 	bool VentilatorLoop();
-
+	
 	//worker
 	bool StartWork();
 	void ApplyTask();
@@ -96,4 +96,5 @@ namespace zparallel{
 #define WORKERBENGIN while(true){/*StartWork();*/
 #define WAITEINGTASK ztaskstatusframe frame = ApplyTask();
 #define ENDSIGNAL EndWorkSignal();
+#define ENDTASK }
 };

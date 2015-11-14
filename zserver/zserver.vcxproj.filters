@@ -71,9 +71,6 @@
     <ClInclude Include="zventilator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="zframeworkbase.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="zmirror.h">
       <Filter>Header Files</Filter>
     </ClInclude>

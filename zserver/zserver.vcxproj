@@ -39,7 +39,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>.;.\json;$(IncludePath)</IncludePath>
+    <IncludePath>.;.\json;..\inc;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -96,7 +96,6 @@
     <ClInclude Include="json\writer.h" />
     <ClInclude Include="NodeCmdLine.h" />
     <ClInclude Include="worker.h" />
-    <ClInclude Include="zframeworkbase.h" />
     <ClInclude Include="zhelpers.h" />
     <ClInclude Include="zmirror.h" />
     <ClInclude Include="zsink.h" />

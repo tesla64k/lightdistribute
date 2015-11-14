@@ -1,4 +1,5 @@
 #include "dispatch.h"
+#include "zframeworkbase.h"
 
 namespace zparallel{
 

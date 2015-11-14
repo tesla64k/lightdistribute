@@ -1,6 +1,7 @@
 #include "calcunit.h"
 #include <iostream>
 #include "json.h"
+#include "zframeworkbase.h"
 
 bool zparallel::job_t::GroupBy(std::string info, calcresource_t*)
 {

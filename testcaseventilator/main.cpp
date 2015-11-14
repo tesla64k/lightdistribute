@@ -1,6 +1,9 @@
 #include "json.h"
 #include "zframeworkbase.h"
 #include "txtconf.h"
+#include "dispatch.h"
+
+
 void main()
 {
 	Json::Reader r;

@@ -1,7 +1,8 @@
+#pragma once
 #include "queue"
 #include <time.h>
 #include <string>
-#include "zframeworkbase.h"
+
 namespace zparallel
 {
 	struct task_t
@@ -17,7 +18,6 @@ namespace zparallel
 		std::string	workerTag;		//map worker
 		std::string	taskInfo;
 		std::string worker;
-/*		task_t(int, int);*/
 		static inline task_t Task_t(int jid, int tid)
 		{
 			task_t t;
@@ -26,12 +26,11 @@ namespace zparallel
 			return t;
 		}
 	};
-	
+	struct ztaskstatusframe;
 	struct dispatch
 	{
 		friend void RegisterDispatch(dispatch*p);
 	public:
-/*		virtual std::deque<task_t*> GroupBy(std::string jobStr,std::string strerr,int*ret) = 0;*/
 		virtual bool GroupBy(zparallel::ztaskstatusframe* zfs, std::deque<task_t*>*, std::string&strerr) = 0;
 		virtual void Encode(task_t*pTask) = 0;
 	private:

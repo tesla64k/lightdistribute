@@ -31,11 +31,20 @@ public:
 public:
 	void							StartWork();
 	zparallel::ztaskstatusframe		ApplyWork();
+	inline void SetTaskExeInfo(int a, zparallel::_exestatelevel b, std::string c){ 
+	
+		process = a, executStateLevel = b, taskinfo = c; 
+
+	}
 private:
 	void StartHeartBeaten(zparallel::ztaskstatusframe& ztask);
 	void errout(std::string, int);
 public:
 	void Finallize();
 	static DWORD WINAPI HeartBearten(LPVOID);
+private:
+	int process;
+	zparallel::_exestatelevel executStateLevel;
+	std::string taskinfo;
 };
 

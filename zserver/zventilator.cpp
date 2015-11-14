@@ -56,6 +56,7 @@ void zventilator::VentilatorLoop()
 			std::cerr << "json err!" << std::endl;
 			return -1;
 		}
+		std::for_each(job->deqTasks.begin(), job->deqTasks.end(), [&](zparallel::task_t*ptask){job->setTasks.insert(ptask); });
 		mapJob.insert(std::make_pair(job->jobId,job));
 		listJob.push_back(job);
 		zparallel::task_t* ptask;
@@ -250,6 +251,7 @@ zparallel::task_t* zventilator::SendTask(std::set<std::string>::iterator itr, zp
 		vWorkerTag.erase(itr);
 		pjob->Commit();
 		setTasking.insert(ptask);
+		ptask->heartBeatAt = clock() + 2 * ptask->heartBeatInterval;
 	}
 	else
 	{

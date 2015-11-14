@@ -12,7 +12,7 @@ namespace zparallel
 		int		taskId;				//任务id
 		int		reCallTimes;		//重启次数
 		int		jobId;
-		int		cost;
+		//int		cost;
 		clock_t		heartBeatAt;		//下一跳时间
 		std::string	demonTag;		//talk To Demon
 		std::string	workerTag;		//map worker

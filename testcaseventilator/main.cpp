@@ -3,6 +3,29 @@
 #include "txtconf.h"
 #include "dispatch.h"
 
+struct exp:public zparallel::dispatch
+{
+	virtual bool GroupBy(zparallel::ztaskstatusframe* zfs, std::deque<zparallel::task_t*>*, std::string&strerr) ;
+	virtual void Encode(zparallel::task_t*pTask) ;
+};
+
+bool exp::GroupBy(zparallel::ztaskstatusframe* zfs, std::deque<zparallel::task_t*>*pdeq, std::string&strerr)
+{
+	std::cout << zfs->valueTag.asString() << std::endl;
+	bool ret = false;
+	for (size_t i = 0; i < zfs->valueParam.size();i++)
+	{
+		zparallel::task_t*ptask = new zparallel::task_t;
+		ptask->taskInfo = zfs->valueParam[i].asString();
+		ptask->jobId = zfs->valueJobId.asInt();
+		ptask->taskId = i;
+		ptask->heartBeatInterval = 5000;			//
+		ptask->reCallTimes = 0;
+		pdeq->push_back(ptask);
+	}
+	ret = true;
+	return ret;
+}
 
 void main()
 {

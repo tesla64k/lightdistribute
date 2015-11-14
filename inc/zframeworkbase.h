@@ -33,7 +33,13 @@ namespace zparallel{
 		VENTILATOR,
 		SLAVER
 	};
-
+	enum _exestatelevel
+	{
+		Normal,
+		Waring,
+		Fail,
+		Success
+	};
 
 	struct zconf
 	{
@@ -81,8 +87,7 @@ namespace zparallel{
 			valueJobId = v["jobid"];
 			valueJobMeta = v["jobmeta"];
 			valueJobParam = v["jobparam"];
-			if (valueJobId.isNull() || valueJobMeta.isNull()||valueJobParam.isNull()
-				|| valueParam.isNull())
+			if (valueJobId.isNull() || valueJobMeta.isNull()||valueJobParam.isNull())
 				return false;
 			return true;
 		}

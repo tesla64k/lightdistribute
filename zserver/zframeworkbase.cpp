@@ -19,14 +19,14 @@ int zparallel::zMsgRecvOnce(void*socekt, zmq_msg_t*pzmsg,int mode)
 }
 
 
-zmq_msg_t zparallel::CreateStateMsg(int jobId, int taskId, int type, int stateCase, std::string info /*=""*/)
+zmq_msg_t zparallel::CreateStateMsg(int jobId, int taskId,  int stateCase,int process,std::string info /*=""*/)
 {
 	zmq_msg_t msg;
 	Json::Value v;
 	v[KEY_STATEJOBID] = jobId;
 	v[KEY_STATETASKID] = taskId;
-	v[KEY_STATETYPE] = type;
 	v[KEY_STATECASE] = stateCase;
+	v[KEY_PROCESS] = process;
 	v[KEY_STATEINFO] = info;
 	auto s = v.toStyledString();
 	zmq_msg_init_size(&msg, s.size());

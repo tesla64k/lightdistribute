@@ -4,14 +4,14 @@ using namespace std;
 
 worker::worker()
 {
-	//nodecmd = new WorkerCmdline;
 	interProcAddr = "inproc://#1";
+	InitializeCriticalSection(&cs);
 }
 
 
 worker::~worker()
 {
-	//delete nodecmd;
+	DeleteCriticalSection(&cs);
 }
 
 
@@ -94,7 +94,7 @@ DWORD WINAPI worker::HeartBearten(LPVOID p)
 	std::tuple<int, int, worker*>*tup = (std::tuple<int, int, worker*>*)p;
 	worker* pworker = std::get<2>(*tup);
 	char buf[10];
-	auto msg = zparallel::CreateStateMsg(std::get<0>(*tup), std::get<1>(*tup), zparallel::HEARTBEAT, zparallel::CASE_TASKSTART);
+	auto msg = zparallel::CreateStateMsg(std::get<0>(*tup), std::get<1>(*tup), zparallel::CASE_TASKSTART,0);
 	int rc = zmq_msg_send(&msg, pworker->heartBeatSocket, ZMQ_DONTWAIT);
 	while (true)
 	{
@@ -103,7 +103,8 @@ DWORD WINAPI worker::HeartBearten(LPVOID p)
 		{
 			break;
 		}
-		msg = zparallel::CreateStateMsg(std::get<0>(*tup), std::get<1>(*tup), zparallel::HEARTBEAT, zparallel::CASE_TASKING);
+		auto info = pworker->GetTaskExeInfo();
+		msg = zparallel::CreateStateMsg(std::get<0>(*tup), std::get<1>(*tup), std::get<1>(info), std::get<0>(info), std::get<2>(info));
 		zmq_msg_send(&msg, pworker->heartBeatSocket, ZMQ_DONTWAIT);
 	}
 	delete tup;

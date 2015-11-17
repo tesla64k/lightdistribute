@@ -19,7 +19,7 @@ namespace zparallel{
 	static const char* KEY_STATETYPE = "\"type\"";
 	static const char* KEY_STATECASE = "\"case\"";
 	static const char* KEY_STATEINFO = "\"info\"";
-
+	static const char* KEY_PROCESS = "\"process\"";
 	static const int TYPE_Ventilator = 1;
 	static const int TYPE_Worker = 2;
 
@@ -32,13 +32,6 @@ namespace zparallel{
 		TOPPROXY = 0xAB,
 		VENTILATOR,
 		SLAVER
-	};
-	enum _exestatelevel
-	{
-		Normal,
-		Waring,
-		Fail,
-		Success
 	};
 
 	struct zconf
@@ -57,18 +50,31 @@ namespace zparallel{
 		Json::Value valueTaskId;
 		Json::Value valueJobMeta;
 		Json::Value valueCase;
-		Json::Value valueStatus;
+		Json::Value valueState;
 		Json::Value valueParam;
 		Json::Value valueJobParam;
-		inline bool Read(Json::Value&v)
+		Json::Value valueProcess;
+// 		inline bool Read(Json::Value&v)
+// 		{
+// 			valueTag = v["tag"];
+// 			valueJobId = v["jobid"];
+// 			valueTaskId = v["taskid"];
+// 			valueCase = v["case"];
+// 			valueState = v["state"];
+// 			if (valueTag.isNull() || valueJobId.isNull() || valueTaskId.isNull()
+// 				|| valueCase.isNull() || valueState.isNull())
+// 				return false;
+// 			return true;
+// 		}
+		inline bool ReadState(Json::Value&v)
 		{
-			valueTag = v["tag"];
 			valueJobId = v["jobid"];
 			valueTaskId = v["taskid"];
 			valueCase = v["case"];
-			valueStatus = v["status"];
-			if (valueTag.isNull() || valueJobId.isNull() || valueTaskId.isNull()
-				|| valueCase.isNull() || valueStatus.isNull())
+			valueProcess = v["rate"];
+			valueState = v["state"];
+			if (valueJobId.isNull() || valueTaskId.isNull() || valueProcess.isNull()
+				|| valueCase.isNull() || valueState.isNull())
 				return false;
 			return true;
 		}
@@ -93,7 +99,7 @@ namespace zparallel{
 		}
 	};
 	int zMsgRecvOnce(void*socekt,zmq_msg_t*pzmsg,int model = 0);
-	zmq_msg_t CreateStateMsg(int jobId,int taskId,int type,int stateCase,std::string info ="");
+	zmq_msg_t CreateStateMsg(int jobId,int taskId,int stateCase,int process,std::string info ="");
 
 	//demon interface
 	bool CreateCommand(std::string cmd);

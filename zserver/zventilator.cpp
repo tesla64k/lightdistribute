@@ -68,7 +68,7 @@ void zventilator::VentilatorLoop()
 			ptask = SendTask(tag, job);
 			if (ptask != nullptr)
 			{
-				auto stateMsg = zparallel::CreateStateMsg(job->jobId,ptask->taskId,zparallel::TASKSTATE,zparallel::TASKSTATE);
+				auto stateMsg = zparallel::CreateStateMsg(job->jobId,ptask->taskId,zparallel::CASE_TASKSTART,0);
 				rc = zmq_msg_send(&stateMsg, stateToProxySocket, ZMQ_DONTWAIT);
 			}
 			tag = vWorkerTag.begin();
@@ -101,7 +101,7 @@ void zventilator::VentilatorLoop()
 		std::string hb = (char*)zmq_msg_data(&msg);
 		r.parse(hb, v);
 		zparallel::ztaskstatusframe taskstatusframe;
-		if (taskstatusframe.Read(v) == false)
+		if (taskstatusframe.ReadState(v) == false)
 		{
 			return -1;
 		}
@@ -117,8 +117,8 @@ void zventilator::VentilatorLoop()
 		if (taskstatusframe.valueCase.asInt() == zparallel::CASE_TASKOVER)		//task over
 		{
 			iter->second->OkTask(task);
-			auto stateMsg = zparallel::CreateStateMsg(iter->second->jobId,task->taskId,zparallel::TASKSTATE,
-				zparallel::CASE_TASKOVER );
+			auto stateMsg = zparallel::CreateStateMsg(iter->second->jobId,task->taskId,
+				zparallel::CASE_TASKOVER,100 );
 			rc = zmq_msg_send(&stateMsg, stateToProxySocket, ZMQ_DONTWAIT);
 			setTasking.erase(task);
 			mapJob.erase(iter);
@@ -183,7 +183,7 @@ void zventilator::VentilatorLoop()
 					auto ptask = SendTask(tag, pjob);
 					if (ptask != nullptr)
 					{
-						auto stateMsg = zparallel::CreateStateMsg(pjob->jobId, ptask->taskId, zparallel::TASKSTATE,zparallel::CASE_TASKSTART);
+						auto stateMsg = zparallel::CreateStateMsg(pjob->jobId, ptask->taskId, zparallel::CASE_TASKSTART,0);
 						rc = zmq_msg_send(&stateMsg, stateToProxySocket, ZMQ_DONTWAIT);
 					}
 					tag = vWorkerTag.begin();

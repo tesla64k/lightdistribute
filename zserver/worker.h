@@ -2,6 +2,8 @@
 #include <vector>
 #include "zframeworkbase.h"
 #include "NodeCmdLine.h"
+#include <windows.h>
+#include <tuple>
 class worker :public WorkerCmdline
 {
 	enum WORKERHANDLEENUM
@@ -27,15 +29,23 @@ public:
 	std::string	heartBeatAddr;
 	std::string	stateAddr;
 	std::string interProcAddr;
+	CRITICAL_SECTION cs;
 	//≤Œ ˝…Ë÷√
 public:
+	inline std::tuple<int, int, std::string> GetTaskExeInfo(){
+	 	EnterCriticalSection(&cs);
+		auto info = std::tuple<int, int, std::string>(process, executStateLevel, taskinfo);
+		LeaveCriticalSection(&cs);
+		return info;
+	}
 	void							StartWork();
 	zparallel::ztaskstatusframe		ApplyWork();
-	inline void SetTaskExeInfo(int a, zparallel::_exestatelevel b, std::string c){ 
-	
+	inline void SetTaskExeInfo(int a, int b, std::string c){ 
+		EnterCriticalSection(&cs);
 		process = a, executStateLevel = b, taskinfo = c; 
-
+		LeaveCriticalSection(&cs);
 	}
+
 private:
 	void StartHeartBeaten(zparallel::ztaskstatusframe& ztask);
 	void errout(std::string, int);
@@ -44,7 +54,7 @@ public:
 	static DWORD WINAPI HeartBearten(LPVOID);
 private:
 	int process;
-	zparallel::_exestatelevel executStateLevel;
+	int executStateLevel;
 	std::string taskinfo;
 };
 

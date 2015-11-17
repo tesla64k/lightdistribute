@@ -3,13 +3,13 @@
 #include "txtconf.h"
 #include "dispatch.h"
 
-struct exp:public zparallel::dispatch
+struct Exp:public zparallel::dispatch
 {
 	virtual bool GroupBy(zparallel::ztaskstatusframe* zfs, std::deque<zparallel::task_t*>*, std::string&strerr) ;
-	virtual void Encode(zparallel::task_t*pTask) ;
+	virtual Json::Value EnCode(zparallel::task_t*pTask);
 };
 
-bool exp::GroupBy(zparallel::ztaskstatusframe* zfs, std::deque<zparallel::task_t*>*pdeq, std::string&strerr)
+bool Exp::GroupBy(zparallel::ztaskstatusframe* zfs, std::deque<zparallel::task_t*>*pdeq, std::string&strerr)
 {
 	std::cout << zfs->valueTag.asString() << std::endl;
 	bool ret = false;
@@ -27,6 +27,11 @@ bool exp::GroupBy(zparallel::ztaskstatusframe* zfs, std::deque<zparallel::task_t
 	return ret;
 }
 
+Json::Value Exp::EnCode(zparallel::task_t*pTask)
+{
+	return Json::Value();
+}
+
 void main()
 {
 	Json::Reader r;
@@ -41,6 +46,8 @@ void main()
 	}
 	else if (_type == zparallel::_servicetype::VENTILATOR)
 	{
+		Exp exp;
+		zparallel::RegisterDispatch(&exp);
 		zparallel::VentilatorLoop();
 	}
 	else if (_type == zparallel::_servicetype::SLAVER)

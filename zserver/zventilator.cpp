@@ -239,7 +239,8 @@ zparallel::task_t* zventilator::SendTask(std::set<std::string>::iterator itr, zp
 	auto ptask = pjob->GetTask();
 	if (ptask != nullptr)
 	{
-		msg_send = pjob->Encode(ptask);
+		zmq_msg_init_size(&msg_send, ptask->taskInfo.size());
+		memcpy(zmq_msg_data(&msg_send), ptask->taskInfo.c_str(), ptask->taskInfo.size());
 	}
 	else
 	{

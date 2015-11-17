@@ -2,7 +2,7 @@
 #include "queue"
 #include <time.h>
 #include <string>
-
+#include "json.h"
 namespace zparallel
 {
 	struct task_t
@@ -31,8 +31,9 @@ namespace zparallel
 	{
 		friend void RegisterDispatch(dispatch*p);
 	public:
-		virtual bool GroupBy(zparallel::ztaskstatusframe* zfs, std::deque<task_t*>*, std::string&strerr) = 0;
-		virtual void Encode(task_t*pTask) = 0;
+		virtual bool GroupBy(zparallel::ztaskstatusframe* zfs, std::deque<task_t*>*, std::string&strerr);
+		virtual Json::Value EnCode(task_t*pTask) ;
+		virtual void DeCode(Json::Value* pvalue) ;
 	private:
 		static dispatch* share_pdispatch;
 		static void Hook(dispatch*pdispatch);

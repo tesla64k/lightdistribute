@@ -23,9 +23,9 @@ zmq_msg_t zparallel::CreateStateMsg(int jobId, int taskId,  int stateCase,int pr
 {
 	zmq_msg_t msg;
 	Json::Value v;
-	v[KEY_STATEJOBID] = jobId;
-	v[KEY_STATETASKID] = taskId;
-	v[KEY_STATECASE] = stateCase;
+	v[KEY_JOBID] = jobId;
+	v[KEY_TASKID] = taskId;
+	v[KEY_TASKCASE] = stateCase;
 	v[KEY_PROCESS] = process;
 	v[KEY_STATEINFO] = info;
 	auto s = v.toStyledString();
@@ -157,4 +157,3 @@ NodeCmdLine* Reflect(NodeCmdLine*pnode)
 	}
 	return G_PNode;
 }
-

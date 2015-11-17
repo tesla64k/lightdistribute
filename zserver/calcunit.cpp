@@ -44,14 +44,15 @@ zparallel::task_t* zparallel::job_t::GetTask()
 	return nullptr;
 }
 
-zmq_msg_t zparallel::job_t::Encode(task_t* p)
-{
- 	zmq_msg_t t;
-	pdispatch->Encode(p);
- 	zmq_msg_init_size(&t, p->taskInfo.size());
-	memcpy(zmq_msg_data(&t), p->taskInfo.c_str(), p->taskInfo.size());
-	return t;
-}
+// zmq_msg_t zparallel::job_t::Encode(task_t* p)
+// {
+//  	zmq_msg_t t;
+// 	zparallel::ztaskstatusframe zframe = pdispatch->EnCode(p);
+//  	zmq_msg_init_size(&t, p->taskInfo.size());
+// 	memcpy(zmq_msg_data(&t), p->taskInfo.c_str(), p->taskInfo.size());
+// 	return t;
+// }
+
 
 void zparallel::job_t::RollBack()
 {

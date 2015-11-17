@@ -1,6 +1,6 @@
 {
 "tag":"location",
-"jobmeta":"nothing",
-"jobid":1,
-"jobparam":[{"a":"D:/rep-git/lightdistribute/examplefile/1","b":"D:/rep-git/lightdistribute/examplefile/2","c":"D:/rep-git/lightdistribute/examplefile/3","d":"D:/rep-git/lightdistribute/examplefile/4"}]
+"meta":"nothing",
+"job":1,
+"param":[{"a":"D:/rep-git/lightdistribute/examplefile/1","b":"D:/rep-git/lightdistribute/examplefile/2","c":"D:/rep-git/lightdistribute/examplefile/3","d":"D:/rep-git/lightdistribute/examplefile/4"}]
 }

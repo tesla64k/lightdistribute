@@ -7,7 +7,7 @@
 
 /*#define LOCATION "location"*/
 /*#define VOCANOL	"vocanol"*/
-#define TAG "tag"
+//#define TAG "tag"
 
 
 class ztop:public TopCmdLine
@@ -36,7 +36,7 @@ private:
 public:
 	int		signal();						//框架函数
 public:
-	static bool	InitialTopConf(ztop*ztop, zparallel::zconf* zconf);
+/*	static bool	InitialTopConf(ztop*ztop, zparallel::zconf* zconf);*/
 	static void InitialJob(std::string, ztop*pztop);
 	static bool InitialService(std::vector<std::pair<std::string, std::string>>, ztop*pztop);
 	static bool InitialState(std::string stateAddr,ztop*pztop);

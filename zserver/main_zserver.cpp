@@ -7,28 +7,28 @@
 #include "json.h"
 
 
-void main3()
-{
-	int in;
-	Json::Reader r;
-	Json::Value v;
-	auto s = v["tag"];
-	void* zctx = zmq_ctx_new();
-	zparallel::zconf zconf;
-	zconf.ctx = zctx;
-	ztop* pztop = new ztop;	
- 	zconf.caseNode = "tcp://127.0.0.1:5556";
-	zconf.state = "tcp://127.0.0.1:5557";
-	zconf.backEnd = "tcp://127.0.0.1:5558";
-	//std::vector<std::vector>
-	ztop::InitialTopConf(pztop,&zconf);
-	pztop->signal();
-	std::cin >> in;
-	//	pztop->SetItems();
-
-	//pztop->LoopFrameWork();
-
-}
+// void main3()
+// {
+// 	int in;
+// 	Json::Reader r;
+// 	Json::Value v;
+// 	auto s = v["tag"];
+// 	void* zctx = zmq_ctx_new();
+// 	zparallel::zconf zconf;
+// 	zconf.ctx = zctx;
+// 	ztop* pztop = new ztop;	
+//  	zconf.caseNode = "tcp://127.0.0.1:5556";
+// 	zconf.state = "tcp://127.0.0.1:5557";
+// 	zconf.backEnd = "tcp://127.0.0.1:5558";
+// 	//std::vector<std::vector>
+// /*	ztop::InitialTopConf(pztop,&zconf);*/
+// 	pztop->signal();
+// 	std::cin >> in;
+// 	//	pztop->SetItems();
+// 
+// 	//pztop->LoopFrameWork();
+// 
+// }
 
 void main()
 {

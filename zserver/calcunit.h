@@ -41,7 +41,7 @@ namespace zparallel
 		std::set<task_t*>		setTasks;	// ß∞‹»ŒŒÒ
 		zparallel::dispatch*	pdispatch;	//
 		bool		GroupBy(std::string , calcresource_t* r = nullptr);
-		zmq_msg_t	Encode(task_t*);
+		/*zmq_msg_t	Encode(task_t*);*/
 		task_t*	GetTask();
 		void	Commit();
 		void	RollBack();

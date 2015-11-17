@@ -39,13 +39,13 @@ int ztop::signal()
 		Json::Value tmpvalue;
 		if (value.type() == Json::objectValue)
 		{
-			tmpvalue = value[TAG];
+			tmpvalue = value[zparallel::KEY_TAG];
 		}
 		else
 			std::cerr << __FUNCTION__ << ":" << "unknown recv:" << value.toStyledString() << std::endl;
 		if (tmpvalue.type() == Json::stringValue)
 		{
-			std::string tagvalue = value[TAG].asString();
+			std::string tagvalue = value[zparallel::KEY_TAG].asString();
 			distSocket = This->pairs[tagvalue];	
 			if (distSocket == nullptr)
 			{
@@ -57,7 +57,7 @@ int ztop::signal()
 		}
 		if (rc == -1)
 		{
-			std::cerr << __FUNCTION__ << " send task err:" << value[TAG] << 
+			std::cerr << __FUNCTION__ << " send task err:" << value[zparallel::KEY_TAG] <<
 				"==========>" <<
 				zmq_strerror(zmq_errno()) << std::endl;
 		}
@@ -72,7 +72,7 @@ int ztop::signal()
 	{
 		rc = zmq_poll(&vItems[0], vItems.size(), -1);
 		rc = zmq_errno();
-		for (auto i = 0; i < vItems.size();i++)
+		for (size_t i = 0; i < vItems.size();i++)
 		{
 			zmq_pollitem_t& t = vItems[i];
 			if ((t.revents &ZMQ_POLLIN) && t.socket == jobSocket)						//按照初始化顺序，case通道第一
@@ -88,7 +88,12 @@ int ztop::signal()
 			}
 			else if ((t.revents &ZMQ_POLLIN) && t.socket == stateDownSocket)					//状态通道
 			{
-				;
+				zmq_msg_init(&msg);
+				int  rc = zmq_msg_recv(&msg, t.socket, 0);
+				if (rc>0)
+				{
+					rc = zmq_msg_send(&msg, backEndSocket, ZMQ_DONTWAIT);
+				}
 			}
 // 			else if ((t.revents &ZMQ_POLLIN) && jobSendSoketSets.find(t.socket) != jobSendSoketSets.end())
 // 			{
@@ -98,15 +103,15 @@ int ztop::signal()
 	}
 }
 
-bool ztop::InitialTopConf(ztop*pztop, zparallel::zconf*zconf)
-{ 
-	pztop->ctx = zconf->ctx;
-	InitialJob(zconf->caseNode, pztop);
-	bool s = InitialState(zconf->state, pztop);
-	s = InitialService(zconf->vServiceToAddr, pztop);
-	InitialFeedBack(zconf->backEnd, pztop);
-	return s;
-}
+// bool ztop::InitialTopConf(ztop*pztop, zparallel::zconf*zconf)
+// { 
+// 	pztop->ctx = zconf->ctx;
+// 	InitialJob(zconf->caseNode, pztop);
+// 	bool s = InitialState(zconf->state, pztop);
+// 	s = InitialService(zconf->vServiceToAddr, pztop);
+// 	InitialFeedBack(zconf->backEnd, pztop);
+// 	return s;
+// }
 
 bool ztop::InitialService(std::vector<std::pair<std::string, std::string>> servicePair, ztop*pztop)
 {
